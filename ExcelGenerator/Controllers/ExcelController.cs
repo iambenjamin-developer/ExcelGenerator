@@ -57,6 +57,14 @@ namespace ExcelGenerator.Controllers
             string lastNameHeaderName = "Apellido";
             string salaryHeaderName = "Salario";
 
+            //Nombre de Cabeceras dinámicas
+            if (sheet.GetRow(0) != null)
+            {
+                nameHeaderName = sheet.GetRow(0).GetCell(nameColumnIndex).StringCellValue;
+                lastNameHeaderName = sheet.GetRow(0).GetCell(lastNameColumnIndex).StringCellValue;
+                salaryHeaderName = sheet.GetRow(0).GetCell(salaryColumnIndex).StringCellValue;
+            }
+
             for (int rowIndex = 1; rowIndex <= sheet.LastRowNum; rowIndex++)
             {
                 //Verifica si la fila tiene datos
